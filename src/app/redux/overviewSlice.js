@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchOrders = createAsyncThunk('overview/fetchOrders', async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/users?_limit=10');
+export const fetchOrders = createAsyncThunk('overview/fetchOrders', async ({ page, limit }) => {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/users?_page=${page}&_limit=${limit}`);
   if (!response.ok) {
     throw new Error('Failed to fetch orders');
   }
   const data = await response.json();
-  return data;
+  const total = response.headers.get('x-total-count');
+  return { data, total };
 });
 
 const initialState = {
@@ -14,6 +15,9 @@ const initialState = {
   orders: [],
   loading: false,
   error: null,
+  currentPage: 1, 
+  totalOrders: 0,  
+  ordersPerPage: 5,
 };
 
 const overviewSlice = createSlice({
@@ -22,6 +26,9 @@ const overviewSlice = createSlice({
   reducers: {
     setSelectedOrder(state, action) {
       state.selectedOrder = action.payload;
+    },
+    setCurrentPage(state, action) {
+      state.currentPage = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -32,7 +39,8 @@ const overviewSlice = createSlice({
       })
       .addCase(fetchOrders.fulfilled, (state, action) => {
         state.loading = false;
-        state.orders = action.payload;
+        state.orders = action.payload.data;
+        state.totalOrders = action.payload.total;
       })
       .addCase(fetchOrders.rejected, (state, action) => {
         state.loading = false;
@@ -41,5 +49,5 @@ const overviewSlice = createSlice({
   },
 });
 
-export const { setSelectedOrder } = overviewSlice.actions;
+export const { setSelectedOrder, setCurrentPage } = overviewSlice.actions;
 export default overviewSlice.reducer;
