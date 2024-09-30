@@ -7,23 +7,22 @@ const Cards = () => {
   const dispatch = useDispatch();
   const [selectedCard, setSelectedCard] = useState(null);
 
+
   const handleCardClick = (order) => {
     dispatch(setSelectedOrder(order));
     setSelectedCard(order.id);
   };
 
   const ordersData = [
-    { id: "1566446", title: "Order Requests", count: 10, description: "Total no. of requests from Stores" },
-    { id: "1566445", title: "Order In Process", count: 50, description: "No. of orders in ship and pack" },
-    { id: "1566444", title: "Order Delivered", count: 200, description: "Total no. of orders delivered" },
+    { id: "01", title: "Order Requests", count: 10, description: "Total no. of requests from Stores" },
+    { id: "02", title: "Order In Process", count: 50, description: "No. of orders in ship and pack" },
+    { id: "03", title: "Order Delivered", count: 200, description: "Total no. of orders delivered" },
   ];
 
   return (
     <div className="p-10">
-      {/* Overview Heading */}
       <h2 className="text-3xl font-bold mb-6">Overview</h2>
 
-      {/* Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 ">
         {ordersData.map((order, index) => (
           <div
