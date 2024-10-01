@@ -30,8 +30,8 @@ const Overview = () => {
           <tr>
             <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Order ID</th>
             <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Name</th>
-            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Username</th>
-            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Email</th>
+            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Store Name</th>
+            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Status</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
