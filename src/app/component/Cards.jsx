@@ -30,7 +30,7 @@ const Cards = () => {
           <div
             key={index}
             className={`p-6 rounded-xl transition-transform transform hover:scale-105 cursor-pointer border-2 ${
-              selectedCard === order.id ? 'bg-[#0A502C]' : 'bg-white'
+              selectedCard === order.id ? 'bg-[#13834B]' : 'bg-white'
             }`}
             onClick={() => handleCardClick(order)}
           >

@@ -5,6 +5,7 @@ import Overview from '@/app/component/Overview';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import Sidebar from '@/app/component/sidebar';
+import InventoryOverview from './component/Inventoryoverview';
 
 const page = () => {
   return (
@@ -15,6 +16,7 @@ const page = () => {
       <Cards/>
       <Overview/>
       </div>
+      <InventoryOverview/>
     </div>
     </Provider>
   )

@@ -22,6 +22,8 @@ const Overview = () => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md border-4 mt-4">
+            <h2 className="text-3xl font-bold mb-6">Order Overview</h2>
+
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
@@ -29,7 +31,7 @@ const Overview = () => {
         <thead className="bg-gray-100">
           <tr>
             <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Order ID</th>
-            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Name</th>
+            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Cost</th>
             <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Store Name</th>
             <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Status</th>
           </tr>
@@ -42,9 +44,9 @@ const Overview = () => {
               className={`cursor-pointer ${selectedOrder?.id === order.id ? 'bg-gray-100' : ''}`}
             >
               <td className="px-6 py-4 text-sm text-gray-700">{order.order_number}</td>
-              <td className="px-6 py-4 text-sm text-gray-700">{order.name}</td>
-              <td className="px-6 py-4 text-sm text-gray-700">{order.username}</td>
-              <td className="px-6 py-4 text-sm text-gray-700">{order.email}</td>
+              <td className="px-6 py-4 text-sm text-gray-700">{order.shipping_cost}</td>
+              <td className="px-6 py-4 text-sm text-gray-700">{order.store.name}</td>
+              <td className="px-6 py-4 text-sm text-gray-700">{order.order_status}</td>
             </tr>
           ))}
         </tbody>
