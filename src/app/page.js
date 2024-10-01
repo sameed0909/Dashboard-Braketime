@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import Sidebar from '@/app/component/sidebar';
 import InventoryOverview from './component/Inventoryoverview';
+import Tickets from './component/Tickets';
 
 const page = () => {
   return (
@@ -16,7 +17,10 @@ const page = () => {
       <Cards/>
       <Overview/>
       </div>
+      <div className="p-6 bg-gray-100">
       <InventoryOverview/>
+      <Tickets/>
+      </div>
     </div>
     </Provider>
   )
