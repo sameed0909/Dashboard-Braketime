@@ -20,38 +20,47 @@ const Cards = () => {
   ];
 
   return (
-    <div className="p-10">
+    <div className="p-13">
+    {/* Outer div added for styling or layout control */}
+    <div className="bg-white rounded-lg shadow-md p-6">
       <h2 className="text-3xl font-bold mb-6">Overview</h2>
-
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 ">
+  
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {ordersData.map((order, index) => (
           <div
             key={index}
-            className={`p-6 rounded-xl transition-transform transform hover:scale-105 cursor-pointer border-2	${
+            className={`p-6 rounded-xl transition-transform transform hover:scale-105 cursor-pointer border-2 ${
               selectedCard === order.id ? 'bg-[#0A502C]' : 'bg-white'
             }`}
             onClick={() => handleCardClick(order)}
           >
-            <h3 className={`text-xl font-bold mb-4 ${
-              selectedCard === order.id ? 'text-white' : 'text-black'
-            }`}>
+            <h3
+              className={`text-xl font-bold mb-4 ${
+                selectedCard === order.id ? 'text-white' : 'text-black'
+              }`}
+            >
               {order.title}
             </h3>
-            <p className={`text-5xl font-extrabold mb-2 ${
-              selectedCard === order.id ? 'text-white' : 'text-black'
-            }`}>
+            <p
+              className={`text-5xl font-extrabold mb-2 ${
+                selectedCard === order.id ? 'text-white' : 'text-black'
+              }`}
+            >
               {order.count}
             </p>
-            <p className={`text-sm ${
-              selectedCard === order.id ? 'text-white' : 'text-black'
-            }`}>
+            <p
+              className={`text-sm ${
+                selectedCard === order.id ? 'text-white' : 'text-black'
+              }`}
+            >
               {order.description}
             </p>
           </div>
         ))}
       </div>
     </div>
-  );
+  </div>
+    );
 };
 
 export default Cards;

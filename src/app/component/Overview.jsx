@@ -21,7 +21,7 @@ const Overview = () => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md border-4">
+    <div className="bg-white p-6 rounded-lg shadow-md border-4 mt-4">
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
