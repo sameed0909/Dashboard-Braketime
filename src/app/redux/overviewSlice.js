@@ -8,15 +8,22 @@ const axiosInstance = axios.create({
   },
 });
 
+export const fetchOrdersByStatus = createAsyncThunk(
+  'overview/fetchOrdersByStatus',
+  async (status) => {
+    const response = await axiosInstance.get(`store-orders?status=${status}`);
+    const ordersData = response.data.data;
+    const totalOrders = response.data.meta_data.totalCount;
+    return { data: ordersData, total: totalOrders };
+  }
+);
+
 export const fetchOrders = createAsyncThunk(
   'overview/fetchOrders',
   async ({ page = 1, limit = 5 }) => {
     const response = await axiosInstance.get(`store-orders?status=in-process&_page=${page}&_limit=${limit}`);
-    console.log(response.data);
-
     const ordersData = response.data.data;
     const totalOrders = response.data.meta_data.totalCount;
-
     return { data: ordersData, total: totalOrders };
   }
 );
@@ -55,7 +62,19 @@ const overviewSlice = createSlice({
       })
       .addCase(fetchOrders.rejected, (state, action) => {
         state.loading = false;
-        console.error(action.error);
+        state.error = action.error.message;
+      })
+      .addCase(fetchOrdersByStatus.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchOrdersByStatus.fulfilled, (state, action) => {
+        state.loading = false;
+        state.orders = action.payload.data;
+        state.totalOrders = action.payload.total;
+      })
+      .addCase(fetchOrdersByStatus.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       });
   },

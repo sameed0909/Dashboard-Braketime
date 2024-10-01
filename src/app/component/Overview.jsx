@@ -1,28 +1,14 @@
 "use client";
-
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchOrders, setSelectedOrder, setCurrentPage } from '@/app/redux/overviewSlice';
 
 const Overview = () => {
   const dispatch = useDispatch();
-  const { orders, loading, error, currentPage, ordersPerPage, totalOrders, selectedOrder } = useSelector((state) => state.overview);
-
-  useEffect(() => {
-    dispatch(fetchOrders({ page: currentPage, limit: ordersPerPage }));
-  }, [dispatch, currentPage, ordersPerPage]);
-
-  const totalPages = Math.ceil(totalOrders / ordersPerPage);
-
-  const handlePageChange = (page) => {
-    if (page >= 1 && page <= totalPages) {
-      dispatch(setCurrentPage(page));
-    }
-  };
+  const { orders, loading, error } = useSelector((state) => state.overview);
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md border-4 mt-4">
-            <h2 className="text-3xl font-bold mb-6">Order Overview</h2>
+      <h2 className="text-3xl font-bold mb-6">Order Overview</h2>
 
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
@@ -38,11 +24,7 @@ const Overview = () => {
         </thead>
         <tbody className="divide-y divide-gray-200">
           {orders.map((order) => (
-            <tr
-              key={order.id}
-              onClick={() => dispatch(setSelectedOrder(order))}
-              className={`cursor-pointer ${selectedOrder?.id === order.id ? 'bg-gray-100' : ''}`}
-            >
+            <tr key={order.id} className="cursor-pointer">
               <td className="px-6 py-4 text-sm text-gray-700">{order.order_number}</td>
               <td className="px-6 py-4 text-sm text-gray-700">{order.shipping_cost}</td>
               <td className="px-6 py-4 text-sm text-gray-700">{order.store.name}</td>
@@ -51,26 +33,6 @@ const Overview = () => {
           ))}
         </tbody>
       </table>
-
-      <div className="flex justify-between mt-4">
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className={`px-4 py-2 bg-[#0A502C] text-white rounded-lg ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
-        >
-          Previous
-        </button>
-        <span className="text-sm text-gray-700">
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className={`px-4 py-2 bg-[#0A502C] text-white rounded-lg ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
-        >
-          Next
-        </button>
-      </div>
     </div>
   );
 };
