@@ -10,13 +10,12 @@ const axiosInstance = axios.create({
 
 export const fetchOrders = createAsyncThunk('overview/fetchOrders', async ({ page, limit }) => {
   const response = await axiosInstance.get(`store-orders?_page=${page}&_limit=${limit}`);
-  console.log(response.data); // For debugging
+  console.log(response.data);
   
-  // Accessing data and total count correctly
-  const ordersData = response.data.data; // Extracting the orders array
-  const totalOrders = response.data.meta_data.totalCount; // Extracting total count
+  const ordersData = response.data.data;
+  const totalOrders = response.data.meta_data.totalCount;
   
-  return { data: ordersData, total: totalOrders }; // Returning the formatted data
+  return { data: ordersData, total: totalOrders };
 });
 
 const initialState = {
@@ -48,12 +47,12 @@ const overviewSlice = createSlice({
       })
       .addCase(fetchOrders.fulfilled, (state, action) => {
         state.loading = false;
-        state.orders = action.payload.data; // Set the orders from the payload
-        state.totalOrders = action.payload.total; // Set total orders from the payload
+        state.orders = action.payload.data; 
+        state.totalOrders = action.payload.total; 
       })
       .addCase(fetchOrders.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message; // Store error message
+        state.error = action.error.message;
       });
   },
 });

@@ -41,7 +41,7 @@ const Overview = () => {
               onClick={() => dispatch(setSelectedOrder(order))}
               className={`cursor-pointer ${selectedOrder?.id === order.id ? 'bg-gray-100' : ''}`}
             >
-              <td className="px-6 py-4 text-sm text-gray-700">{order.id}</td>
+              <td className="px-6 py-4 text-sm text-gray-700">{order.order_number}</td>
               <td className="px-6 py-4 text-sm text-gray-700">{order.name}</td>
               <td className="px-6 py-4 text-sm text-gray-700">{order.username}</td>
               <td className="px-6 py-4 text-sm text-gray-700">{order.email}</td>
