@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
 
 const axiosInstance = axios.create({
   baseURL: 'https://bt-swagger.360xpertsolutions.com/v1/',
@@ -11,8 +11,9 @@ const axiosInstance = axios.create({
 export const fetchOrdersByStatus = createAsyncThunk(
   'overview/fetchOrdersByStatus',
   async (status) => {
-    const response = await axiosInstance.get(`store-orders?status=${status}`);
+    const response = await axiosInstance.get(`store-orders?status=${status}&page=1&pageSize=5`);
     const ordersData = response.data.data;
+    console.log(ordersData);
     const totalOrders = response.data.meta_data.totalCount;
     return { data: ordersData, total: totalOrders };
   }
@@ -36,6 +37,7 @@ const initialState = {
   currentPage: 1,
   totalOrders: 0,
   ordersPerPage: 5,
+  currentstatus : '',
 };
 
 const overviewSlice = createSlice({
@@ -48,22 +50,25 @@ const overviewSlice = createSlice({
     setCurrentPage(state, action) {
       state.currentPage = action.payload;
     },
+    setcurrentstatus(state, action) {
+      state.currentstatus = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchOrders.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchOrders.fulfilled, (state, action) => {
-        state.loading = false;
-        state.orders = action.payload.data;
-        state.totalOrders = action.payload.total;
-      })
-      .addCase(fetchOrders.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      })
+      // .addCase(fetchOrders.pending, (state) => {
+      //   state.loading = true;
+      //   state.error = null;
+      // })
+      // .addCase(fetchOrders.fulfilled, (state, action) => {
+      //   state.loading = false;
+      //   state.orders = action.payload.data;
+      //   state.totalOrders = action.payload.total;
+      // })
+      // .addCase(fetchOrders.rejected, (state, action) => {
+      //   state.loading = false;
+      //   state.error = action.error.message;
+      // })
       .addCase(fetchOrdersByStatus.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -80,5 +85,5 @@ const overviewSlice = createSlice({
   },
 });
 
-export const { setSelectedOrder, setCurrentPage } = overviewSlice.actions;
+export const { setSelectedOrder, setCurrentPage ,setcurrentstatus } = overviewSlice.actions;
 export default overviewSlice.reducer;
