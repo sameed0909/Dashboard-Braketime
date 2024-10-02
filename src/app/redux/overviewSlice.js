@@ -30,7 +30,6 @@ const initialState = {
   currentstatus: '',
 };
 
-
 const overviewSlice = createSlice({
   name: 'overview',
   initialState,
