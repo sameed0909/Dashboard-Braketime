@@ -1,15 +1,18 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchOrders, setCurrentPage } from '@/app/redux/overviewSlice';
+import { fetchOrdersByStatus, setCurrentPage } from '@/app/redux/overviewSlice';
 
 const Overview = () => {
   const dispatch = useDispatch();
-  const { orders, loading, error, currentPage, totalOrders, ordersPerPage } = useSelector((state) => state.overview);
+  const { orders, loading, error, currentPage, totalOrders, ordersPerPage, currentstatus } = useSelector((state) => state.overview);
 
+  // Fetch orders based on current status and page number
   useEffect(() => {
-    dispatch(fetchOrders({ page: currentPage, limit: ordersPerPage }));
-  }, [dispatch, currentPage, ordersPerPage]);
+    if (currentstatus) {
+      dispatch(fetchOrdersByStatus(currentstatus)); // Fetch orders based on status
+    }
+  }, [dispatch, currentstatus, currentPage]);
 
   const totalPages = Math.ceil(totalOrders / ordersPerPage);
 

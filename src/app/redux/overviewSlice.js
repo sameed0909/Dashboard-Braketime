@@ -10,19 +10,9 @@ const axiosInstance = axios.create({
 
 export const fetchOrdersByStatus = createAsyncThunk(
   'overview/fetchOrdersByStatus',
-  async (status) => {
-    const response = await axiosInstance.get(`store-orders?status=${status}&page=1&pageSize=5`);
-    const ordersData = response.data.data;
-    console.log(ordersData);
-    const totalOrders = response.data.meta_data.totalCount;
-    return { data: ordersData, total: totalOrders };
-  }
-);
-
-export const fetchOrders = createAsyncThunk(
-  'overview/fetchOrders',
-  async ({ page = 1, limit = 5 }) => {
-    const response = await axiosInstance.get(`store-orders?status=in-process&_page=${page}&_limit=${limit}`);
+  async (status, { getState }) => {
+    const { currentPage, ordersPerPage } = getState().overview;  // Use current page for status
+    const response = await axiosInstance.get(`store-orders?status=${status}&page=${currentPage}&pageSize=${ordersPerPage}`);
     const ordersData = response.data.data;
     const totalOrders = response.data.meta_data.totalCount;
     return { data: ordersData, total: totalOrders };
@@ -37,8 +27,9 @@ const initialState = {
   currentPage: 1,
   totalOrders: 0,
   ordersPerPage: 5,
-  currentstatus : '',
+  currentstatus: '',
 };
+
 
 const overviewSlice = createSlice({
   name: 'overview',

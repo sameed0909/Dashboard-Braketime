@@ -1,15 +1,17 @@
 "use client";
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchOrdersByStatus } from '@/app/redux/overviewSlice';
+import { fetchOrdersByStatus, setCurrentPage, setcurrentstatus } from '@/app/redux/overviewSlice';
 
 const Cards = () => {
   const dispatch = useDispatch();
   const [selectedCard, setSelectedCard] = useState(null);
 
   const handleCardClick = (status) => {
-    dispatch(fetchOrdersByStatus(status));
     setSelectedCard(status);
+    dispatch(setCurrentPage(1));  // Reset page to 1 on status change
+    dispatch(setcurrentstatus(status));  // Set the status in the Redux store
+    dispatch(fetchOrdersByStatus(status));  // Fetch data for the selected status
   };
 
   const ordersData = [
