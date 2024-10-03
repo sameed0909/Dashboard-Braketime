@@ -7,10 +7,9 @@ const Overview = () => {
   const dispatch = useDispatch();
   const { orders, loading, error, currentPage, totalOrders, ordersPerPage, currentstatus } = useSelector((state) => state.overview);
 
-  // Fetch orders based on current status and page number
   useEffect(() => {
     if (currentstatus) {
-      dispatch(fetchOrdersByStatus(currentstatus)); // Fetch orders based on status
+      dispatch(fetchOrdersByStatus(currentstatus));
     }
   }, [dispatch, currentstatus, currentPage]);
 

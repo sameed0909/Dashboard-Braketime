@@ -11,7 +11,7 @@ const axiosInstance = axios.create({
 export const fetchOrdersByStatus = createAsyncThunk(
   'overview/fetchOrdersByStatus',
   async (status, { getState }) => {
-    const { currentPage, ordersPerPage } = getState().overview;  // Use current page for status
+    const { currentPage, ordersPerPage } = getState().overview;
     const response = await axiosInstance.get(`store-orders?status=${status}&page=${currentPage}&pageSize=${ordersPerPage}`);
     const ordersData = response.data.data;
     const totalOrders = response.data.meta_data.totalCount;
