@@ -9,9 +9,9 @@ const Cards = () => {
 
   const handleCardClick = (status) => {
     setSelectedCard(status);
-    dispatch(setCurrentPage(1));  // Reset page to 1 on status change
-    dispatch(setcurrentstatus(status));  // Set the status in the Redux store
-    dispatch(fetchOrdersByStatus(status));  // Fetch data for the selected status
+    dispatch(setCurrentPage(1));
+    dispatch(setcurrentstatus(status));
+    dispatch(fetchOrdersByStatus(status));
   };
 
   const ordersData = [
