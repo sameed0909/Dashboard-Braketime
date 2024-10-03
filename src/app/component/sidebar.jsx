@@ -10,7 +10,7 @@ const Sidebar = () => {
     };
 
     return (
-        <div className="flex flex-col h-screen bg-white w-64">
+        <div className="flex flex-col h-[1056] bg-[#FCFCFC] w-64">
             <div className="flex items-center justify-between p-4">
             <img src="/logo.png" alt="BrakeTime Logo" className="h-150 w-150" />
             </div>
