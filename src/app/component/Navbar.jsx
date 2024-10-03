@@ -29,13 +29,13 @@ const Navbar = () => {
         </div>
 
         {/* Login section aligned to the right */}
-        <div className="flex justify-end gap-4 ml-4">
+        <div className="flex justify-end gap-2 ml-4">
           <div className="rounded-full bg-[#F0FFF7] p-4">
             <img src="/notification.png" alt="Notification Bell" className="h-6 w-8" />
           </div>
           <div className="flex items-center">
             <img src="/Ellipse.png" alt="User Avatar" className="h-14 w-12 rounded-full" />
-            <h1 className="text-sm font-semibold ml-2">John</h1>
+            <h1 className="text-sm font-bold ml-2">John</h1>
           </div>
         </div>
       </form>

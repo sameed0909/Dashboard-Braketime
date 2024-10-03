@@ -29,7 +29,7 @@ const Cards = () => {
           {ordersData.map((order, index) => (
             <div
               key={index}
-              className={`p-6 rounded-xl transition-transform transform hover:scale-105 cursor-pointer border-2 ${
+              className={`p-6 rounded-xl transition-transform transform hover:scale-105 cursor-pointer border-2 shadow-2xl ${
                 selectedCard === order.status ? 'bg-[#13834B]' : 'bg-white'
               }`}
               onClick={() => handleCardClick(order.status)}

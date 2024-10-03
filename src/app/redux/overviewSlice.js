@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
 
-const axiosInstance = axios.create({
+const axiosInstance = axios.create(
+  {
   baseURL: 'https://bt-swagger.360xpertsolutions.com/v1/',
   headers: {
     Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODVjZjBlMDAtYzk4Ni00YjlkLTk3YzItZTQwZjI5ZWVhZmViIiwidXNlcl9uYW1lIjoibXVoYW1tYWQgc2hhaGFiIiwicm9sZSI6InN0b3JlIG1hbmFnZXIiLCJ3b3JrcGxhY2VfaWQiOiJkZTJlYzA1NS01MDUzLTRjOTQtYWZmMC1kOWJjMDQxZTYzMjciLCJ3b3JrcGxhY2VfdHlwZSI6InN0b3JlIiwid29ya3BsYWNlX25hbWUiOiJzdG9yZSBvbmUiLCJpYXQiOjE3Mjc5Mzg1NTMsImV4cCI6MTcyODAyNDk1M30.2mQIsZMqKfgh3EV31T2TLRJCCmhhEnIAUubaq6qVgvM`,
