@@ -1,5 +1,3 @@
-// components/Sidebar.jsx
-
 import { useState } from 'react';
 
 const Sidebar = () => {
