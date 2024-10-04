@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navbar = () => {
   return (
-    <div className='w-[84%] ml-auto bg-white p-4 '>
+    <div className='w-full  bg-black p-4 '>
       <form className="max-w-md flex items-center justify-between w-full">
         {/* Search Bar */}
         <div className="relative w-full">

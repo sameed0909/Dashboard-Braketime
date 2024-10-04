@@ -27,7 +27,7 @@ const initialState = {
   error: null,
   currentPage: 1,
   totalOrders: 0,
-  ordersPerPage: 5,
+  ordersPerPage: 10,
   currentstatus: '',
 };
 
