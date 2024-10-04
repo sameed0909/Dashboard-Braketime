@@ -2,8 +2,8 @@ import React from 'react';
 
 const Navbar = () => {
   return (
-    <div className='w-full  bg-white p-4 '>
-      <form className="max-w-md flex items-center justify-between w-full">
+    <div className='w-full flex flex-row justify-between  bg-white p-4 '>
+      <form className=" flex items-center justify-between w-[30%] ">
         {/* Search Bar */}
         <div className="relative w-full">
           <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
@@ -27,9 +27,9 @@ const Navbar = () => {
             required
           />
         </div>
-
+        </form>
         {/* Login section aligned to the right */}
-        <div className="flex justify-end gap-2 ml-4  ">
+        <div className="flex justify-center gap-2 w-[20%] ">
           <div className="rounded-full bg-[#F0FFF7] p-4">
             <img src="/notification.png" alt="Notification Bell" className="h-6 w-8" />
           </div>
@@ -38,7 +38,7 @@ const Navbar = () => {
             <h1 className="text-sm font-bold ml-2">John</h1>
           </div>
         </div>
-      </form>
+      
     </div>
   );
 };
