@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchOrdersByStatus, setCurrentPage } from '@/app/redux/overviewSlice';
 
@@ -34,29 +34,31 @@ const Overview = () => {
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
-      <table className="min-w-full table-auto">
-        <thead className="bg-gray-100">
-          <tr>
-            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Order ID</th>
-            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Cost</th>
-            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Store Name</th>
-            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Status</th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-gray-200">
-          {orders.map((order) => (
-            <tr key={order.id} className="cursor-pointer">
-              <td className="px-6 py-4 text-sm text-gray-700">{order.order_number}</td>
-              <td className="px-6 py-4 text-sm text-gray-700">{order.shipping_cost}</td>
-              <td className="px-6 py-4 text-sm text-gray-700">{order.store.name}</td>
-              <td className="px-6 py-4 text-sm text-gray-700">{order.order_status}</td>
+      <div className="overflow-x-auto">
+        <table className="min-w-full table-auto">
+          <thead className="bg-gray-100">
+            <tr>
+              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-600">Order ID</th>
+              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-600">Cost</th>
+              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-600">Store Name</th>
+              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-600">Status</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {orders.map((order) => (
+              <tr key={order.id} className="cursor-pointer">
+                <td className="px-4 py-4 text-sm text-gray-700">{order.order_number}</td>
+                <td className="px-4 py-4 text-sm text-gray-700">{order.shipping_cost}</td>
+                <td className="px-4 py-4 text-sm text-gray-700">{order.store.name}</td>
+                <td className="px-4 py-4 text-sm text-gray-700">{order.order_status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-      <div className="flex justify-between mt-4">
-        <button onClick={handlePreviousPage} disabled={currentPage === 1} className="bg-[#13834B] text-white px-4 py-2 rounded-lg disabled:opacity-50">
+      <div className="flex flex-col sm:flex-row justify-between mt-4">
+        <button onClick={handlePreviousPage} disabled={currentPage === 1} className="bg-[#13834B] text-white px-4 py-2 rounded-lg disabled:opacity-50 mb-2 sm:mb-0">
           Previous
         </button>
         <span>

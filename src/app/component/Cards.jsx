@@ -21,15 +21,13 @@ const Cards = () => {
   ];
 
   return (
-    <div className="p-13">
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-3xl font-bold mb-6">Overview</h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div className="bg-white rounded-lg shadow-md p-4 lg:p-8 md:p-6 xl:p-10">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 -mt-2 md:-mt-4">Overview</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {ordersData.map((order, index) => (
             <div
               key={index}
-              className={`p-6 rounded-xl transition-transform transform hover:scale-105 cursor-pointer border-2 shadow-2xl ${
+              className={`p-4 md:p-6 rounded-xl transition-transform transform hover:scale-105 cursor-pointer border-2 shadow-2xl ${
                 selectedCard === order.status ? 'bg-[#13834B]' : 'bg-white'
               }`}
               onClick={() => handleCardClick(order.status)}
@@ -59,7 +57,7 @@ const Cards = () => {
           ))}
         </div>
       </div>
-    </div>
+
   );
 };
 

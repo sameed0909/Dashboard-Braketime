@@ -26,7 +26,7 @@ const InventoryOverview = () => {
     ];
 
     return (
-        <div className="bg-white rounded-lg shadow-md p-6 md:p-8 max-w-[380px] mx-auto h-auto flex flex-col justify-between">
+        <div className="bg-white rounded-lg shadow-md p-6 md:p-8 max-w-[380px] mx-auto h-auto flex flex-col justify-between  overflow-hidden">
             <h2 className="text-2xl font-bold text-center mb-4">Inventory Overview</h2>
             <div className="flex-grow">
                 {inventoryItems.map((item, index) => (
