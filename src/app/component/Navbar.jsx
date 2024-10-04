@@ -36,7 +36,7 @@ const Navbar = () => {
         </div>
         <div className="flex items-center">
           <img src="/Ellipse.png" alt="User Avatar" className="h-12 w-12 rounded-full" />
-          <h1 className="text-sm font-bold ml-2">John</h1>
+          <h1 className="text-sm font-bold ml-2">Rayford Chenail</h1>
         </div>
       </div>
     </div>

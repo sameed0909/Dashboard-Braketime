@@ -47,10 +47,10 @@ const Overview = () => {
           <tbody className="divide-y divide-gray-200">
             {orders.map((order) => (
               <tr key={order.id} className="cursor-pointer">
-                <td className="px-4 py-4 text-sm text-gray-700">{order.order_number}</td>
-                <td className="px-4 py-4 text-sm text-gray-700">{order.shipping_cost}</td>
-                <td className="px-4 py-4 text-sm text-gray-700">{order.store.name}</td>
-                <td className="px-4 py-4 text-sm text-gray-700">{order.order_status}</td>
+                <td className="px-4 py-4 text-sm text-black font-semibold">{order.order_number}</td>
+                <td className="px-4 py-4 text-sm text-black font-semibold">{order.shipping_cost}</td>
+                <td className="px-4 py-4 text-sm text-black font-semibold">{order.store.name}</td>
+                <td className="px-4 py-4 text-sm text-black font-semibold">{order.order_status}</td>
               </tr>
             ))}
           </tbody>

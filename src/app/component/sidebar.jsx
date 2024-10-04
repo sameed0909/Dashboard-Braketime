@@ -27,7 +27,7 @@ const Sidebar = () => {
                         alt="Dashboard"
                         className={`h-4 w-4 ${activeItem === 'dashboard' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`} 
                     />
-                    <h2 className={`text-base font-medium ${activeItem === 'dashboard' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}>Dashboard</h2>
+                    <h2 className={`text-base font-medium cursor-pointer ${activeItem === 'dashboard' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}>Dashboard</h2>
                 </div>
                 <div className="p-4 flex items-center space-x-3" onClick={() => handleItemClick('inventory')}>
                     <img
@@ -35,7 +35,7 @@ const Sidebar = () => {
                         alt="Inventory"
                         className={`h-6 w-6 ${activeItem === 'inventory' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}
                     />
-                    <h2 className={`text-base font-medium ${activeItem === 'inventory' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}>Inventory</h2>
+                    <h2 className={`text-base font-medium cursor-pointer ${activeItem === 'inventory' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}>Inventory</h2>
                 </div>
                 <ul className="flex flex-col p-4 space-y-2">
                     <li className="flex items-center space-x-3" onClick={() => { handleItemClick('orders'); toggleMenu(); }}>
@@ -44,17 +44,17 @@ const Sidebar = () => {
                             alt="Orders"
                             className={`h-6 w-6 ${activeItem === 'orders' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}
                         />
-                        <span className={`text-base font-medium ${activeItem === 'orders' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}>
+                        <span className={`text-base font-medium cursor-pointer ${activeItem === 'orders' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}>
                             Orders
                         </span>
                         <span className="ml-auto text-[#8F94A0]" onClick={toggleMenu}>
-                            {isOpen ? <img src="/arrow-up.png" alt="Arrow" /> : <img src="/arrow-down.png" alt="Arrow" />}
+                            {isOpen ? <img src="/arrow-down.png" alt="Arrow" /> : <img src="/arrow-down.png" alt="Arrow" />}
                         </span>
                     </li>
                     {isOpen && (
                         <ul className="pl-6 space-y-1">
-                            <li className="text-[#8F94A0] text-base font-medium">Pending Orders</li>
-                            <li className="text-[#8F94A0] text-base font-medium">Completed Orders</li>
+                            <li className="text-[#8F94A0] text-base font-medium cursor-pointer">Pending Orders</li>
+                            <li className="text-[#8F94A0] text-base font-medium cursor-pointer">Completed Orders</li>
                         </ul>
                     )}
                 </ul>
@@ -64,7 +64,7 @@ const Sidebar = () => {
                         alt="Tickets"
                         className={`h-6 w-6 ${activeItem === 'tickets' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}
                     />
-                    <h2 className={`text-base font-medium ${activeItem === 'tickets' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}>Tickets</h2>
+                    <h2 className={`text-base font-medium cursor-pointer ${activeItem === 'tickets' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}>Tickets</h2>
                 </div>
                 <div className="p-4 flex items-center space-x-3" onClick={() => handleItemClick('employees')}>
                     <img
@@ -72,7 +72,7 @@ const Sidebar = () => {
                         alt="Employees"
                         className={`h-6 w-6 ${activeItem === 'employees' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}
                     />
-                    <h2 className={`text-lg font-medium ${activeItem === 'employees' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}>Employees</h2>
+                    <h2 className={`text-lg font-medium cursor-pointer ${activeItem === 'employees' ? 'text-[#13834B]' : 'text-[#8F94A0]'}`}>Employees</h2>
                 </div>
             </div>
         </div>
