@@ -12,21 +12,13 @@ import Navbar from './component/Navbar';
 const page = () => {
   return (
     <Provider store={store}>
-
-
-
-
       <div className='flex flex-row w-full'>
-
         <div>
-
           <Sidebar />
         </div>
         <div className='flex flex-col w-full'>
           <Navbar />
-
           <div className='flex flex-row'>
-
             <div className="flex-1 p-6 bg-gray-100  ">
               <Cards />
               <Overview />

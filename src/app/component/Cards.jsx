@@ -15,9 +15,9 @@ const Cards = () => {
   };
 
   const ordersData = [
-    { id: "01", title: "Order Requests", count: 10, description: "Total no. of requests from Stores", status: "in-transit" },
-    { id: "02", title: "Order In Process", count: 50, description: "No. of orders in ship and pack", status: "in-process" },
-    { id: "03", title: "Order Delivered", count: 200, description: "Total no. of orders delivered", status: "completed" },
+    { id: "01", title: "Order Requests", count: 3, description: "Total no. of requests from Stores", status: "in-transit" },
+    { id: "02", title: "Order In Process", count: 60, description: "No. of orders in ship and pack", status: "in-process" },
+    { id: "03", title: "Order Delivered", count: 7, description: "Total no. of orders delivered", status: "completed" },
   ];
 
   return (
