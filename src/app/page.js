@@ -19,11 +19,11 @@ const page = () => {
         <div className='flex flex-col w-full'>
           <Navbar />
           <div className='flex md:flex-row flex-col'>
-            <div className="flex-1 p-6 bg-gray-100">
+            <div className="flex-1 p-6 bg-gray-100 dark:bg-gray-900">
               <Cards />
               <Overview />
             </div>
-            <div className="p-6 bg-gray-100">
+            <div className="p-6 bg-gray-100 dark:bg-gray-900">
               <InventoryOverview />
               <Tickets />
             </div>

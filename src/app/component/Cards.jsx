@@ -21,43 +21,42 @@ const Cards = () => {
   ];
 
   return (
-      <div className="bg-white rounded-lg shadow-md p-4 lg:p-8 md:p-6 xl:p-10">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 -mt-2 md:-mt-4">Overview</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {ordersData.map((order, index) => (
-            <div
-              key={index}
-              className={`p-4 md:p-6 rounded-xl transition-transform transform hover:scale-105 cursor-pointer border-2 shadow-2xl ${
-                selectedCard === order.status ? 'bg-[#13834B]' : 'bg-white'
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 lg:p-8 md:p-6 xl:p-10">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 -mt-2 md:-mt-4 dark:text-white">Overview</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {ordersData.map((order, index) => (
+          <div
+            key={index}
+            className={`p-4 md:p-6 rounded-xl transition-transform transform hover:scale-105 cursor-pointer border-2 shadow-2xl ${
+              selectedCard === order.status ? 'bg-[#13834B] dark:bg-green-700' : 'bg-white dark:bg-gray-700'
+            }`}
+            onClick={() => handleCardClick(order.status)}
+          >
+            <h3
+              className={`text-xl font-bold mb-4 ${
+                selectedCard === order.status ? 'text-white' : 'text-black dark:text-white'
               }`}
-              onClick={() => handleCardClick(order.status)}
             >
-              <h3
-                className={`text-xl font-bold mb-4 ${
-                  selectedCard === order.status ? 'text-white' : 'text-black'
-                }`}
-              >
-                {order.title}
-              </h3>
-              <p
-                className={`text-5xl font-extrabold mb-2 ${
-                  selectedCard === order.status ? 'text-white' : 'text-black'
-                }`}
-              >
-                {order.count}
-              </p>
-              <p
-                className={`text-sm ${
-                  selectedCard === order.status ? 'text-white' : 'text-black'
-                }`}
-              >
-                {order.description}
-              </p>
-            </div>
-          ))}
-        </div>
+              {order.title}
+            </h3>
+            <p
+              className={`text-5xl font-extrabold mb-2 ${
+                selectedCard === order.status ? 'text-white' : 'text-black dark:text-white'
+              }`}
+            >
+              {order.count}
+            </p>
+            <p
+              className={`text-sm ${
+                selectedCard === order.status ? 'text-white' : 'text-black dark:text-gray-300'
+              }`}
+            >
+              {order.description}
+            </p>
+          </div>
+        ))}
       </div>
-
+    </div>
   );
 };
 
