@@ -8,12 +8,15 @@ import Sidebar from '@/app/component/sidebar';
 import InventoryOverview from './component/Inventoryoverview';
 import Tickets from './component/Tickets';
 import Navbar from './component/Navbar';
+import Page from '@/app/login/page';
 
 const page = () => {
   return (
     <Provider store={store}>
+      <Page/>
       <div className='flex flex-row w-full'>
         <div>
+          
           <Sidebar />
         </div>
         <div className='flex flex-col w-full'>
