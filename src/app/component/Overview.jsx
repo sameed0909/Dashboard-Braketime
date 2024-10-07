@@ -28,7 +28,7 @@ const Overview = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border-4 mt-4">
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border-2 mt-4">
       <h2 className="text-3xl font-bold mb-6 dark:text-white">Order Overview</h2>
 
       {loading && (
