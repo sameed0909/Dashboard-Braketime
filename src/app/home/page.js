@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <Provider store={store}>
       <div className='flex flex-row w-full'>
-        <div>
+        <div> 
           <Sidebar />
         </div>
         <div className='flex flex-col w-full'>
