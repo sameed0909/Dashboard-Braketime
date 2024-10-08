@@ -7,12 +7,19 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isMounted, setIsMounted] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
   const router = useRouter();
   const dispatch = useDispatch();
   const { isAuthenticated, isLoading, error } = useSelector((state) => state.auth);
 
   useEffect(() => {
     setIsMounted(true);
+
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleLogin = (event) => {
@@ -25,6 +32,16 @@ const Login = () => {
       });
     }
   };
+
+  if (showLoader) {
+    return (
+      <div className="h-screen flex items-center justify-center bg-gray-100">
+        <div className="w-full h-full flex items-center justify-center">
+          <img src="/background.png" alt="Loading" className="w-15 h-15 object-cover" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="h-screen flex items-center justify-center bg-gray-100">
@@ -74,7 +91,7 @@ const Login = () => {
             >
               {isLoading ? 'Loading...' : 'Login'}
             </button>
-            {error && <p className="text-red-500 mt-2">{error}</p>} {/* Display error message */}
+            {error && <p className="text-red-500 mt-2">{error}</p>}
           </form>
           <div className="text-center text-gray-500 text-sm mt-8">
             Powered by 360Xpertsolutions
